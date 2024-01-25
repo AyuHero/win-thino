@@ -27,6 +27,7 @@ namespace wpf_winthino
         public main()
         {
             InitializeComponent();
+            Topmost = true;
         }
         public int a = 1;
         private void but_Click(object sender, RoutedEventArgs e)

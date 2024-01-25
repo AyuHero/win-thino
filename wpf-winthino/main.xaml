@@ -5,16 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_winthino"
         mc:Ignorable="d"
-        Title="main" Height="450" Width="450" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown">
+        Title="main" Height="350" Width="350" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown">
     <Border Background="White" CornerRadius="15" x:Name="bor" >
         <Grid>
+            <Grid Height="290" Width="340" VerticalAlignment="Top" x:Name="grtext">
+                <StackPanel HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Win Thino" FontSize="25" Margin="0,5,0,1"/>
+                        <Button Width="20" Height=" 20" Background="Transparent" Content="—" BorderThickness="0" Margin="160,0,0,0" Click="Button_Click_1"/>
+                        <Button Width="20" Height=" 20" Background="Transparent" Content="X" BorderThickness="0" Margin="10,0" Click="Button_Click"/>
+                    </StackPanel>
+                    
+                    <RichTextBox Height="240" Width="330" BorderBrush="Black" BorderThickness="2"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Width="280" Height="60" HorizontalAlignment="Left" Margin="5,5" VerticalAlignment="Bottom" x:Name="grbom">
+                <Border BorderThickness="2" BorderBrush="Black" Height="60" Width="270">
+
+                </Border>
+            </Grid>
+  
             
-
-
+            
             <Border Background="White" Height="70" Width="70" Grid.Column="1" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
                 <Button x:Name="but" Click="but_Click" Background="AliceBlue" BorderThickness="0" Height="52" Width="52" MouseLeftButtonDown="but_MouseLeftButtonDown" >
-                    <Border CornerRadius="15" BorderThickness="1" BorderBrush="Black" Height="50" Width="50">
-                        <TextBlock Text="发射" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Border CornerRadius="15" BorderThickness="2" BorderBrush="Black" Height="50" Width="50">
+                        <TextBlock Text="发射" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="textb"/>
                     </Border>
                 </Button>
                 

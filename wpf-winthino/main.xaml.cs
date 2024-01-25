@@ -19,6 +19,11 @@ namespace wpf_winthino
     /// </summary>
     public partial class main : Window
     {
+
+        private bool isDragging = false;
+        private Point startPoint;
+
+
         public main()
         {
             InitializeComponent();
@@ -26,30 +31,21 @@ namespace wpf_winthino
         public int a = 1;
         private void but_Click(object sender, RoutedEventArgs e)
         {
-            if (a == 1)
-            {
-                bor.Height = 70;
-                bor.Width = 70;
-
-                this.Height = 70;
-                this.Width = 70;
-
-                Top = Top + 380;
-                Left = Left + 380;
-
-                a = 0;
-                return;
-            }
             if (a == 0)
             {
-                Top = Top - 380;
-                Left = Left - 380;
+                Top = Top - 280;
+                Left = Left - 280;
 
-                bor.Height = 450;
-                bor.Width = 450;
+                bor.Height = 350;
+                bor.Width = 350;
 
-                this.Height = 450;
-                this.Width = 450;
+                this.Height = 350;
+                this.Width = 350;
+
+                grtext.Visibility = Visibility.Visible;
+                grbom.Visibility = Visibility.Visible;
+
+                textb.Text = "发射";
 
                 a = 1;
                 return;
@@ -64,6 +60,31 @@ namespace wpf_winthino
         private void but_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            bor.Height = 70;
+            bor.Width = 70;
+
+            this.Height = 70;
+            this.Width = 70;
+
+            Top = Top + 280;
+            Left = Left + 280;
+
+            grtext.Visibility = Visibility.Collapsed;
+            grbom.Visibility = Visibility.Collapsed;
+
+            textb.Text = "开启";
+
+            a = 0;
+            return;
         }
     }
 }

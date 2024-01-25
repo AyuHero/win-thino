@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_winthino"
         mc:Ignorable="d"
-        Title="main" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="main" Height="450" Width="450" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown">
+    <Border Background="White" CornerRadius="15" x:Name="bor" >
+        <Grid>
+            
+
+
+            <Border Background="White" Height="70" Width="70" Grid.Column="1" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+                <Button x:Name="but" Click="but_Click" Background="AliceBlue" BorderThickness="0" Height="52" Width="52" MouseLeftButtonDown="but_MouseLeftButtonDown" >
+                    <Border CornerRadius="15" BorderThickness="1" BorderBrush="Black" Height="50" Width="50">
+                        <TextBlock Text="发射" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </Button>
+                
+            </Border>
+        </Grid>
+    </Border>
 </Window>

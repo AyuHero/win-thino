@@ -15,8 +15,13 @@
                         <Button Width="20" Height=" 20" Background="Transparent" Content="—" BorderThickness="0" Margin="155,-2,0,0" Click="Button_Click_1"/>
                         <Button Width="20" Height=" 20" Background="Transparent" Content="X" BorderThickness="0" Margin="8,0" Click="Button_Click"/>
                     </StackPanel>
-                    
-                    <RichTextBox Height="240" Width="330" BorderBrush="Black" BorderThickness="2"/>
+                    <RichTextBox Height="240" Width="330" BorderBrush="Black" BorderThickness="2"  x:Name="rich">
+                        <RichTextBox.Resources>
+                            <Style TargetType="{x:Type Paragraph}">
+                                <Setter Property="LineHeight" Value="1"/>
+                            </Style>
+                        </RichTextBox.Resources>
+                    </RichTextBox>
                 </StackPanel>
             </Grid>
 
@@ -41,20 +46,20 @@
                                 <Image Source="/image/复制.png" Height="25" />
                             </Button>
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" >
-                                <Image Source="/image/粘贴.png" Height="20"/>
+                                <Image Source="/image/粘贴-F.png" Height="18" Margin="0,1,0,0"/>
                             </Button>
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" >
                                 <Image Source="/image/剪切.png" Height="25"/>
                             </Button>
                         </StackPanel>
-                        
-                        
+
+
                         <Border Width="270" Height=" 1" Background="Black" />
 
 
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" >
-                            <CheckBox Height="15" Width="15" BorderBrush="Black" Margin="5,0,5,0"/>
-                            <ComboBox Width="38" Height="20">
+                            <CheckBox Height="15" Width="15" BorderBrush="Black" Margin="5,0,10,0" Background="White"/>
+                            <ComboBox Width="38" Height="20" BorderBrush="White" Background="Black" SelectedIndex="0" Margin="0,0,5,0">
                                 <ComboBoxItem Content="D AILY"/>
                                 <ComboBoxItem Content="M ULTI"/>
                                 <ComboBoxItem Content="F ILE"/>
@@ -64,9 +69,7 @@
                                 <Image Source="/image/上传图片.png"  Height=" 22"/>
                             </Button>
 
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Margin="112,0,0,0" >
-                                <Image Source="/image/日历.png" Height="22"/>
-                            </Button>
+                            <DatePicker Height="21" Background="Transparent" Width="30" BorderThickness="0" Margin="102,0,0,0" x:Name="date" SelectedDateChanged="date_SelectedDateChanged"/>
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" >
                                 <Image Source="/image/设置.png" Height="25"/>
                             </Button>
@@ -75,16 +78,15 @@
                     </Grid>
                 </Border>
             </Grid>
-  
-            
-            
+
+
             <Border Background="White" Height="70" Width="70" Grid.Column="1" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
-                <Button x:Name="but" Click="but_Click" Background="AliceBlue" BorderThickness="0" Height="52" Width="52" MouseLeftButtonDown="but_MouseLeftButtonDown" >
-                    <Border CornerRadius="15" BorderThickness="2" BorderBrush="Black" Height="50" Width="50">
+                <Button x:Name="but" Click="but_Click" Background="Transparent" BorderThickness="0" Height="52" Width="52" MouseLeftButtonDown="but_MouseLeftButtonDown" >
+                    <Border CornerRadius="15" BorderThickness="2" BorderBrush="Black" Height="50" Width="50" x:Name="fsb" >
                         <TextBlock Text="发射" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="textb"/>
                     </Border>
                 </Button>
-                
+
             </Border>
         </Grid>
     </Border>

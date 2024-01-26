@@ -101,7 +101,6 @@
     <Resource Include="image\斜体.png" />
     <Resource Include="image\日历.png" />
     <Resource Include="image\粗体.png" />
-    <Resource Include="image\粘贴.png" />
     <Resource Include="image\高亮.png" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="image\设置.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\粘贴-F.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

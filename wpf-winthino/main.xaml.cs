@@ -20,9 +20,6 @@ namespace wpf_winthino
     public partial class main : Window
     {
 
-        private bool isDragging = false;
-        private Point startPoint;
-
 
         public main()
         {
@@ -47,6 +44,12 @@ namespace wpf_winthino
                 grbom.Visibility = Visibility.Visible;
 
                 textb.Text = "发射";
+
+                but.Height = 52;
+                but.Width = 52;
+
+                fsb.Height = 50;
+                fsb.Width = 50;
 
                 a = 1;
                 return;
@@ -82,10 +85,28 @@ namespace wpf_winthino
             grtext.Visibility = Visibility.Collapsed;
             grbom.Visibility = Visibility.Collapsed;
 
+
+
             textb.Text = "开启";
+
+            but.Height = 47;
+            but.Width = 47;
+
+            fsb.Height = 45;
+            fsb.Width = 45;
 
             a = 0;
             return;
+        }
+
+        private void date_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedDateText = date.SelectedDate.Value.ToString("yyyy-MM-dd");
+            rich.AppendText(selectedDateText);
         }
     }
 }

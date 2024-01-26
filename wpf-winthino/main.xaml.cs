@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace wpf_winthino
 {
@@ -30,10 +22,17 @@ namespace wpf_winthino
             Topmost = true;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
-        public int a = 1;
+
+
+        public int bigger = 1;
+
+
+
         private void but_Click(object sender, RoutedEventArgs e)
         {
-            if (a == 0)
+
+
+            if (bigger == 0)
             {
                 Top = Top - 280;
                 Left = Left - 280;
@@ -55,10 +54,21 @@ namespace wpf_winthino
                 fsb.Height = 50;
                 fsb.Width = 50;
 
-                a = 1;
+
+                bigger = 1;
+
                 return;
             }
+
+
+
+
+
+
+
+
         }
+
 
         private void mainf_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -99,18 +109,17 @@ namespace wpf_winthino
             fsb.Height = 45;
             fsb.Width = 45;
 
-            a = 0;
+            bigger = 0;
             return;
         }
 
-        private void date_Click(object sender, RoutedEventArgs e)
-        {
-        }
+
 
         private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             string selectedDateText = date.SelectedDate.Value.ToString("yyyy-MM-dd");
-            rich.AppendText(selectedDateText);
+            string tasks = " 📆" + selectedDateText;
+            rich.AppendText(tasks);
         }
 
         private void setb_Click(object sender, RoutedEventArgs e)
@@ -123,7 +132,7 @@ namespace wpf_winthino
 
         private void mainf_Loaded(object sender, RoutedEventArgs e)
         {
-            Clipboard.Clear();
+
             string filePath = @".\配置文件.txt";
 
             string filestring = "";
@@ -139,10 +148,146 @@ namespace wpf_winthino
             catch 
             {
                 // 处理异常
-                MessageBox.Show("配置文件异常请检查");
+                System.Windows.MessageBox.Show("配置文件异常请检查");
             }
             setsrting = filestring.Split(',');
             imas = int.Parse(setsrting[2]);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Clipboard.Clear();
+
+            TextPointer originalSelectionStart = rich.CaretPosition;
+
+            // 剪切选中的文本到剪贴板
+            rich.Cut();
+
+            if (System.Windows.Clipboard.GetText() == "")
+            {
+                return;
+            }
+
+            // 从剪贴板中获取文本
+            string formattedText = "**" + System.Windows.Clipboard.GetText() + "**";
+
+            // 恢复原始选中位置并插入格式化的文本
+            rich.Selection.Select(originalSelectionStart, originalSelectionStart);
+            rich.CaretPosition.InsertTextInRun(formattedText);
+
+            System.Windows.Clipboard.Clear();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Clipboard.Clear();
+
+            TextPointer originalSelectionStart = rich.CaretPosition;
+
+            // 剪切选中的文本到剪贴板
+            rich.Cut();
+
+            if (System.Windows.Clipboard.GetText() == "")
+            {
+                return;
+            }
+
+            // 从剪贴板中获取文本
+            string formattedText = "*" + System.Windows.Clipboard.GetText() + "*";
+
+            // 恢复原始选中位置并插入格式化的文本
+            rich.Selection.Select(originalSelectionStart, originalSelectionStart);
+            rich.CaretPosition.InsertTextInRun(formattedText);
+
+            System.Windows.Clipboard.Clear();
+
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Clipboard.Clear();
+
+            TextPointer originalSelectionStart = rich.CaretPosition;
+
+            // 剪切选中的文本到剪贴板
+            rich.Cut();
+
+            if (System.Windows.Clipboard.GetText() == "")
+            {
+                return;
+            }
+
+            // 从剪贴板中获取文本
+            string formattedText = "~~" + System.Windows.Clipboard.GetText() + "~~";
+
+            // 恢复原始选中位置并插入格式化的文本
+            rich.Selection.Select(originalSelectionStart, originalSelectionStart);
+            rich.CaretPosition.InsertTextInRun(formattedText);
+
+            System.Windows.Clipboard.Clear();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Clipboard.Clear();
+
+            TextPointer originalSelectionStart = rich.CaretPosition;
+
+            // 剪切选中的文本到剪贴板
+            rich.Cut();
+
+            if (System.Windows.Clipboard.GetText() == "")
+            {
+                return;
+            }
+
+            // 从剪贴板中获取文本
+            string formattedText = "==" + System.Windows.Clipboard.GetText() + "==";
+
+            // 恢复原始选中位置并插入格式化的文本
+            rich.Selection.Select(originalSelectionStart, originalSelectionStart);
+            rich.CaretPosition.InsertTextInRun(formattedText);
+
+            System.Windows.Clipboard.Clear();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            rich.Copy();
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            TextPointer cursorPosition = rich.CaretPosition;
+
+            // 从剪贴板中获取文本
+            string clipboardText = System.Windows.Clipboard.GetText();
+
+            // 在光标位置插入文本
+            cursorPosition.InsertTextInRun(clipboardText);
+
+            // 更新光标位置，将其置于插入文本的末尾
+            rich.CaretPosition = cursorPosition.GetPositionAtOffset(clipboardText.Length);
+
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            rich.Cut();
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            TextPointer cursorPosition = rich.CaretPosition;
+
+            // 从剪贴板中获取文本
+            string clipboardText = "_______\n";
+
+            // 在光标位置插入文本
+            cursorPosition.InsertTextInRun(clipboardText);
+
+            // 更新光标位置，将其置于插入文本的末尾
+            rich.CaretPosition = cursorPosition.GetPositionAtOffset(clipboardText.Length);
         }
     }
 }

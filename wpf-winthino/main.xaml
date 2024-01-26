@@ -29,26 +29,29 @@
                 <Border BorderThickness="0" BorderBrush="Black" Height="65" Width="270">
                     <Grid>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,2,0,0" >
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0">
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_2">
                                 <Image Source="/image/粗体.png" Height="25"/>
                             </Button>
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0">
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_3">
                                 <Image Source="/image/斜体.png" Height="28" />
                             </Button>
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0">
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_4">
                                 <Image Source="/image/删除线.png" Height="30" />
                             </Button>
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0">
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_5">
                                 <Image Source="/image/高亮.png"  Height="25" Margin="0,3,0,0"/>
                             </Button>
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_9" >
+                                <Image Source="/image/分割线.png" Height="20"/>
+                            </Button>
 
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Margin="60,0,0,0">
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Margin="28,0,0,0" Click="Button_Click_6">
                                 <Image Source="/image/复制.png" Height="25" />
                             </Button>
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" >
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_7" >
                                 <Image Source="/image/粘贴-F.png" Height="18" Margin="0,1,0,0"/>
                             </Button>
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" >
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_8" >
                                 <Image Source="/image/剪切.png" Height="25"/>
                             </Button>
                         </StackPanel>
@@ -60,10 +63,10 @@
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" >
                             <CheckBox Height="15" Width="15" BorderBrush="Black" Margin="5,0,10,0" Background="White"/>
                             <ComboBox Width="38" Height="20" BorderBrush="White" Background="Black" SelectedIndex="0" Margin="0,0,5,0">
-                                <ComboBoxItem Content="D AILY"/>
-                                <ComboBoxItem Content="M ULTI"/>
-                                <ComboBoxItem Content="F ILE"/>
-                                <ComboBoxItem Content="C ANVAS"/>
+                                <ComboBoxItem Content="DAILY"/>
+                                <ComboBoxItem Content="MULTI"/>
+                                <ComboBoxItem Content="FILE"/>
+                                <ComboBoxItem Content="CANVAS"/>
                             </ComboBox>
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" >
                                 <Image Source="/image/上传图片.png"  Height=" 22"/>

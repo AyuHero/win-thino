@@ -1,0 +1,22 @@
+﻿<Window x:Class="wpf_winthino.set"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf_winthino"
+        mc:Ignorable="d"
+        Title="设置" Height="200" Width="428" WindowStyle="ToolWindow" ResizeMode="NoResize" Closed="Window_Closed">
+    <Grid Loaded="Grid_Loaded">
+        <StackPanel Margin="5,30" Orientation="Horizontal" Height="25" VerticalAlignment="Top"  >
+            <TextBlock Text="目标地址：" FontSize="18"/>
+            <TextBox Width="250" Height="25" BorderThickness="2" x:Name="mbtext"/>
+            <Button Content="修改" Margin="5,0" Width="40" Click="Button_Click"/>
+        </StackPanel>
+        <TextBlock Text="------------------------------------------------------------------------------------------" Margin="0,70"/>
+        <StackPanel  Margin="5,100,5,0" Orientation="Horizontal" Height="70" VerticalAlignment="Top" >
+            <TextBlock Text="附件地址：" FontSize="18" Height="82"/>
+            <TextBlock Width="250" Height="63" Text="附件地址" FontSize="15" x:Name="fjtxt"/>
+            <Button Content="修改" Margin="5,0" Width="40" Height="29" Click="Button_Click_1" />
+        </StackPanel>
+    </Grid>
+</Window>

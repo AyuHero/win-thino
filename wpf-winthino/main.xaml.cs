@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,14 @@ namespace wpf_winthino
     public partial class main : Window
     {
 
+        public string[] setsrting = { };
+        public int imas = 0;
 
         public main()
         {
             InitializeComponent();
             Topmost = true;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
         public int a = 1;
         private void but_Click(object sender, RoutedEventArgs e)
@@ -107,6 +111,38 @@ namespace wpf_winthino
         {
             string selectedDateText = date.SelectedDate.Value.ToString("yyyy-MM-dd");
             rich.AppendText(selectedDateText);
+        }
+
+        private void setb_Click(object sender, RoutedEventArgs e)
+        {
+            set s1 = new set();
+            this.Hide();
+            s1.ShowDialog();
+            this.Close();
+        }
+
+        private void mainf_Loaded(object sender, RoutedEventArgs e)
+        {
+            Clipboard.Clear();
+            string filePath = @".\配置文件.txt";
+
+            string filestring = "";
+            try
+            {
+                // 使用StreamReader打开文件
+                using (StreamReader sr = new StreamReader(filePath))
+                {
+                    // 读取文件的所有内容
+                    filestring = sr.ReadToEnd();
+                }
+            }
+            catch 
+            {
+                // 处理异常
+                MessageBox.Show("配置文件异常请检查");
+            }
+            setsrting = filestring.Split(',');
+            imas = int.Parse(setsrting[2]);
         }
     }
 }

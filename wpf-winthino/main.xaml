@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_winthino"
         mc:Ignorable="d"
-        Title="main" Height="350" Width="350" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown">
+        Title="main" Height="350" Width="350" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown" Loaded="mainf_Loaded">
     <Border Background="White" CornerRadius="15" x:Name="bor" >
         <Grid>
             <Grid Height="290" Width="340" VerticalAlignment="Top" x:Name="grtext">
@@ -70,7 +70,7 @@
                             </Button>
 
                             <DatePicker Height="21" Background="Transparent" Width="30" BorderThickness="0" Margin="102,0,0,0" x:Name="date" SelectedDateChanged="date_SelectedDateChanged"/>
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" >
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" x:Name="setb" Click="setb_Click" >
                                 <Image Source="/image/设置.png" Height="25"/>
                             </Button>
 

@@ -93,5 +93,22 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\分割线.png" />
+    <Resource Include="image\删除线.png" />
+    <Resource Include="image\剪切.png" />
+    <Resource Include="image\复制.png" />
+    <Resource Include="image\斜体.png" />
+    <Resource Include="image\日历.png" />
+    <Resource Include="image\粗体.png" />
+    <Resource Include="image\粘贴.png" />
+    <Resource Include="image\高亮.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\上传图片.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\设置.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

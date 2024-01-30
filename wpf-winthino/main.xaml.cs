@@ -250,44 +250,5 @@ namespace wpf_winthino
 
             System.Windows.Clipboard.Clear();
         }
-
-        private void Button_Click_6(object sender, RoutedEventArgs e)
-        {
-            rich.Copy();
-        }
-
-        private void Button_Click_7(object sender, RoutedEventArgs e)
-        {
-            TextPointer cursorPosition = rich.CaretPosition;
-
-            // 从剪贴板中获取文本
-            string clipboardText = System.Windows.Clipboard.GetText();
-
-            // 在光标位置插入文本
-            cursorPosition.InsertTextInRun(clipboardText);
-
-            // 更新光标位置，将其置于插入文本的末尾
-            rich.CaretPosition = cursorPosition.GetPositionAtOffset(clipboardText.Length);
-
-        }
-
-        private void Button_Click_8(object sender, RoutedEventArgs e)
-        {
-            rich.Cut();
-        }
-
-        private void Button_Click_9(object sender, RoutedEventArgs e)
-        {
-            TextPointer cursorPosition = rich.CaretPosition;
-
-            // 从剪贴板中获取文本
-            string clipboardText = "_______\n";
-
-            // 在光标位置插入文本
-            cursorPosition.InsertTextInRun(clipboardText);
-
-            // 更新光标位置，将其置于插入文本的末尾
-            rich.CaretPosition = cursorPosition.GetPositionAtOffset(clipboardText.Length);
-        }
     }
 }

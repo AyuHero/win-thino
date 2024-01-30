@@ -35,9 +35,8 @@
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_5">
                                 <Image Source="/image/高亮.png"  Height="25" Margin="0,3,0,0"/>
                             </Button>
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_9" />
-                            
-                            <DatePicker Height="25" Background="Transparent" Width="30" BorderThickness="0" Margin="80,5,0,0" x:Name="date" SelectedDateChanged="date_SelectedDateChanged"/>
+
+                            <DatePicker Height="25" Background="Transparent" Width="30" BorderThickness="0" Margin="105,5,0,0" x:Name="date" SelectedDateChanged="date_SelectedDateChanged"/>
 
                         </StackPanel>
 
@@ -47,7 +46,7 @@
 
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" >
                             <CheckBox Height="15" Width="15" BorderBrush="Black" Margin="5,0,10,0" Background="White"/>
-                            <ComboBox Width="70" Height="20" BorderBrush="White" Background="Black" SelectedIndex="0" Margin="0,0,5,0">
+                            <ComboBox Width="65" Height="20" BorderBrush="White" Background="Black" SelectedIndex="0" Margin="0,0,5,0">
                                 <ComboBoxItem Content="DAILY"/>
                                 <ComboBoxItem Content="MULTI"/>
                                 <ComboBoxItem Content="FILE"/>

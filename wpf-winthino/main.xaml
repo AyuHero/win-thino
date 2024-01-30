@@ -15,7 +15,12 @@
                         <Button Width="20" Height=" 20" Background="Transparent" Content="—" BorderThickness="0" Margin="155,-2,0,0" Click="Button_Click_1"/>
                         <Button Width="20" Height=" 20" Background="Transparent" Content="X" BorderThickness="0" Margin="8,0" Click="Button_Click"/>
                     </StackPanel>
-                    <RichTextBox Height="240" Width="330" BorderBrush="Black" BorderThickness="2"  x:Name="rich"/>
+                    <RichTextBox Height="240" Width="330" BorderBrush="Black" BorderThickness="2"  x:Name="rich">
+                        <FlowDocument>
+                            <Paragraph LineHeight="1.5">
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
                 </StackPanel>
             </Grid>
 

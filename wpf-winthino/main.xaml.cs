@@ -60,13 +60,6 @@ namespace wpf_winthino
                 return;
             }
 
-
-
-
-
-
-
-
         }
 
 

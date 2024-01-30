@@ -27,7 +27,7 @@
             <Grid Width="280" Height="65" HorizontalAlignment="Left" Margin="5,5" VerticalAlignment="Bottom" x:Name="grbom">
                 <Border BorderThickness="0" BorderBrush="Black" Height="65" Width="270">
                     <Grid>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,2,0,0" >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5,2,0,0" >
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_2">
                                 <Image Source="/image/粗体.png" Height="25"/>
                             </Button>
@@ -46,10 +46,10 @@
                         </StackPanel>
 
 
-                        <Border Width="270" Height=" 1" Background="Black" />
+                        <Border Width="260" Height=" 1" Background="Black" />
 
 
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="5,0" >
                             <CheckBox Height="15" Width="15" BorderBrush="Black" Margin="5,0,10,0" Background="White"/>
                             <ComboBox Width="65" Height="20" BorderBrush="White" Background="Black" SelectedIndex="0" Margin="0,0,5,0">
                                 <ComboBoxItem Content="DAILY"/>

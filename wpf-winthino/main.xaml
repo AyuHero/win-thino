@@ -50,8 +50,8 @@
 
 
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Margin="5,0" >
-                            <CheckBox Height="15" Width="15" BorderBrush="Black" Margin="5,0,10,0" Background="White"/>
-                            <ComboBox Width="65" Height="20" BorderBrush="White" Background="Black" SelectedIndex="0" Margin="0,0,5,0">
+                            <CheckBox Height="15" Width="15" BorderBrush="Black" Margin="5,0,10,0" Background="White" x:Name="ctodo"/>
+                            <ComboBox Width="65" Height="20" BorderBrush="White" Background="Black" SelectedIndex="0" Margin="0,0,5,0" x:Name="com">
                                 <ComboBoxItem Content="DAILY"/>
                                 <ComboBoxItem Content="MULTI"/>
                                 <ComboBoxItem Content="FILE"/>

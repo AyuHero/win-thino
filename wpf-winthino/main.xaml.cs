@@ -2,19 +2,24 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Net.Http;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Threading.Tasks;
 
 namespace wpf_winthino
 {
     /// <summary>
     /// main.xaml 的交互逻辑
     /// </summary>
-    public partial class main : Window
+    public partial class main : System.Windows.Window
     {
 
         public string[] setsrting = { };
@@ -32,7 +37,7 @@ namespace wpf_winthino
 
 
 
-        private void but_Click(object sender, RoutedEventArgs e)
+        private async void but_Click(object sender, RoutedEventArgs e)
         {
 
 
@@ -57,11 +62,56 @@ namespace wpf_winthino
 
                 fsb.Height = 50;
                 fsb.Width = 50;
-
-
                 bigger = 1;
 
                 return;
+            }
+            else 
+            {
+                TextRange textRange = new TextRange(rich.Document.ContentStart, rich.Document.ContentEnd);
+                var message = textRange.Text;
+                var todo = true;
+
+                if (ctodo.IsChecked == true)
+                {
+                    todo = false;
+                }
+
+
+                var apiUrl = setsrting[0];
+                var requestData = new
+                {
+                    text = message,
+                    isList = todo,
+                    type = com.Text.Trim(),
+                };
+
+
+                using (var httpClient = new HttpClient())
+                {
+                    try
+                    {
+                        var jsonContent = Newtonsoft.Json.JsonConvert.SerializeObject(requestData);
+                        var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+
+                        var response = await httpClient.PostAsync(apiUrl, content);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            rich.Document.Blocks.Clear();
+                            //成功
+                        }
+                        else
+                        {
+                           //失败
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Windows.MessageBox.Show(ex.ToString());
+                    }
+                }
             }
 
         }

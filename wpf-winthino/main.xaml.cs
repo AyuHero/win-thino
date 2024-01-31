@@ -369,7 +369,28 @@ namespace wpf_winthino
             }
             catch 
             {
-                System.Windows.MessageBox.Show("失败,请检查配置的附件文件的位置是否正确，如第一次设置，请重启软件");
+                
+                System.Windows.MessageBox.Show("失败,请检查配置的附件文件的位置是否正确，如第一次使用请先设置附件位置");
+                
+            }
+        }
+        private void Savemage(BitmapSource image, string filePath)
+        {
+            try
+            {
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(image));
+
+                using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                {
+                    encoder.Save(stream);
+                }
+            }
+            catch
+            {
+
+                System.Windows.MessageBox.Show("失败,请检查配置的附件文件的位置是否正确，如第一次使用请先设置附件位置");
+
             }
         }
 
@@ -378,6 +399,24 @@ namespace wpf_winthino
             fsb.Background = new SolidColorBrush(Colors.White);
             textb.Foreground = new SolidColorBrush(Colors.Black);
             textb.Text = "发射";
+
+
+            if (System.Windows.Clipboard.ContainsImage())
+            {
+                BitmapSource image = System.Windows.Clipboard.GetImage();
+                string savePath = setsrting[1] + @"\image" + imas + ".png";
+                Savemage(image, savePath);
+                rich.AppendText(" " + "\n![[image" + imas + ".png]]\n");
+                imas += 1;
+                string a = setsrting[0] + "," + setsrting[1] + "," + imas;
+                string filPath = @".\配置文件.txt";
+                File.WriteAllText(filPath, a);
+                System.Windows.Clipboard.Clear();
+                rich.Focus();
+                rich.CaretPosition = rich.Document.ContentEnd;
+                rich.ScrollToEnd();
+            }
+
         }
 
         public object color1 = null;

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace wpf_winthino
 {
@@ -64,6 +65,11 @@ namespace wpf_winthino
                 fsb.Width = 50;
                 bigger = 1;
 
+                rich.Document.Blocks.Clear();
+                rich.AppendText(System.Windows.Clipboard.GetText());
+                System.Windows.Clipboard.Clear();
+
+
                 return;
             }
             else 
@@ -100,16 +106,25 @@ namespace wpf_winthino
                         if (response.IsSuccessStatusCode)
                         {
                             rich.Document.Blocks.Clear();
+
+                            fsb.Background = new SolidColorBrush(Colors.Green);
+                            textb.Foreground = new SolidColorBrush(Colors.White);
+                            textb.Text = "成功";
                             //成功
                         }
                         else
                         {
-                           //失败
+                            fsb.Background = new SolidColorBrush(Colors.Red);
+                            textb.Foreground = new SolidColorBrush(Colors.White);
+                            textb.Text = "失败";
+                            //失败
                         }
                     }
                     catch (Exception ex)
                     {
-                        System.Windows.MessageBox.Show(ex.ToString());
+                        fsb.Background = new SolidColorBrush(Colors.Red);
+                        textb.Foreground = new SolidColorBrush(Colors.White);
+                        textb.Text = "失败";
                     }
                 }
             }
@@ -155,6 +170,10 @@ namespace wpf_winthino
 
             fsb.Height = 45;
             fsb.Width = 45;
+
+
+            fsb.Background = new SolidColorBrush(Colors.White);
+            textb.Foreground = new SolidColorBrush(Colors.Black);
 
             bigger = 0;
             return;
@@ -333,6 +352,13 @@ namespace wpf_winthino
             {
                 System.Windows.MessageBox.Show("失败,请检查配置的附件文件的位置是否正确，如第一次设置，请重启软件");
             }
+        }
+
+        private void rich_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            fsb.Background = new SolidColorBrush(Colors.White);
+            textb.Foreground = new SolidColorBrush(Colors.Black);
+            textb.Text = "发射";
         }
     }
 }

@@ -80,6 +80,9 @@ namespace wpf_winthino
                 System.Windows.Clipboard.Clear();
                 TextRange textRange = new TextRange(rich.Document.ContentStart, rich.Document.ContentEnd);
                 string message = textRange.Text.Trim();
+
+                if (message == "")
+                { return; }
                 var todo = true;
 
 

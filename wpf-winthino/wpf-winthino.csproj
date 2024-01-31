@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>013112574164_0纸飞机,折纸,发送.ico</ApplicationIcon>
+    <ApplicationIcon>013115302283_0纸飞机,折纸,发送.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -150,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="013112574164_0纸飞机,折纸,发送.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\013115302283_0纸飞机,折纸,发送.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="013115302283_0纸飞机,折纸,发送.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

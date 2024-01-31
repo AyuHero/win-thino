@@ -77,9 +77,11 @@ namespace wpf_winthino
             }
             else 
             {
+                System.Windows.Clipboard.Clear();
                 TextRange textRange = new TextRange(rich.Document.ContentStart, rich.Document.ContentEnd);
-                var message = textRange.Text;
+                string message = textRange.Text.Trim();
                 var todo = true;
+
 
                 if (ctodo.IsChecked == true)
                 {
@@ -113,6 +115,7 @@ namespace wpf_winthino
                             fsb.Background = new SolidColorBrush(Colors.Green);
                             textb.Foreground = new SolidColorBrush(Colors.White);
                             textb.Text = "成功";
+                            ctodo.IsChecked = false;
                             //成功
                         }
                         else
@@ -123,7 +126,7 @@ namespace wpf_winthino
                             //失败
                         }
                     }
-                    catch (Exception ex)
+                    catch 
                     {
                         fsb.Background = new SolidColorBrush(Colors.Red);
                         textb.Foreground = new SolidColorBrush(Colors.White);
@@ -189,6 +192,7 @@ namespace wpf_winthino
             string selectedDateText = date.SelectedDate.Value.ToString("yyyy-MM-dd");
             string tasks = " 📆" + selectedDateText;
             rich.AppendText(tasks);
+            ctodo.IsChecked = true;
         }
 
         private void setb_Click(object sender, RoutedEventArgs e)
@@ -234,6 +238,7 @@ namespace wpf_winthino
 
             if (System.Windows.Clipboard.GetText() == "")
             {
+                rich.Focus();
                 return;
             }
 
@@ -243,7 +248,7 @@ namespace wpf_winthino
             // 恢复原始选中位置并插入格式化的文本
             rich.Selection.Select(originalSelectionStart, originalSelectionStart);
             rich.CaretPosition.InsertTextInRun(formattedText);
-
+            rich.Focus();
             System.Windows.Clipboard.Clear();
         }
 
@@ -258,6 +263,7 @@ namespace wpf_winthino
 
             if (System.Windows.Clipboard.GetText() == "")
             {
+                rich.Focus();
                 return;
             }
 
@@ -267,7 +273,7 @@ namespace wpf_winthino
             // 恢复原始选中位置并插入格式化的文本
             rich.Selection.Select(originalSelectionStart, originalSelectionStart);
             rich.CaretPosition.InsertTextInRun(formattedText);
-
+            rich.Focus();
             System.Windows.Clipboard.Clear();
 
         }
@@ -283,6 +289,7 @@ namespace wpf_winthino
 
             if (System.Windows.Clipboard.GetText() == "")
             {
+                rich.Focus();
                 return;
             }
 
@@ -292,7 +299,7 @@ namespace wpf_winthino
             // 恢复原始选中位置并插入格式化的文本
             rich.Selection.Select(originalSelectionStart, originalSelectionStart);
             rich.CaretPosition.InsertTextInRun(formattedText);
-
+            rich.Focus();
             System.Windows.Clipboard.Clear();
         }
 
@@ -307,6 +314,7 @@ namespace wpf_winthino
 
             if (System.Windows.Clipboard.GetText() == "")
             {
+                rich.Focus();
                 return;
             }
 
@@ -316,7 +324,7 @@ namespace wpf_winthino
             // 恢复原始选中位置并插入格式化的文本
             rich.Selection.Select(originalSelectionStart, originalSelectionStart);
             rich.CaretPosition.InsertTextInRun(formattedText);
-
+            rich.Focus();
             System.Windows.Clipboard.Clear();
         }
 
@@ -326,16 +334,21 @@ namespace wpf_winthino
             openFileDialog.Filter = "Image Files|*.png;*.jpg;*.jpeg;*.gif;*.bmp|All Files|*.*";
             openFileDialog.ShowDialog();
             string filePath = openFileDialog.FileName;
-            BitmapImage image = new BitmapImage(new Uri(filePath));
-            string savePath = setsrting[1] + @"\image" + imas + ".png";
-            SaveImage(image, savePath);
-            rich.AppendText("\n![[image" + imas + ".png|500]]\n");
-            imas += 1;
-            string a = setsrting[0] + "," + setsrting[1] + "," + imas;
-            string filPath = @".\配置文件.txt";
-            File.WriteAllText(filPath, a);
-            System.Windows.Clipboard.Clear();
-
+            if (filePath != "")
+            {
+                BitmapImage image = new BitmapImage(new Uri(filePath));
+                string savePath = setsrting[1] + @"\image" + imas + ".png";
+                SaveImage(image, savePath);
+                rich.AppendText(" "+"\n![[image" + imas + ".png]]\n");
+                imas += 1;
+                string a = setsrting[0] + "," + setsrting[1] + "," + imas;
+                string filPath = @".\配置文件.txt";
+                File.WriteAllText(filPath, a);
+                System.Windows.Clipboard.Clear();
+                rich.Focus();
+                rich.CaretPosition = rich.Document.ContentEnd;
+                rich.ScrollToEnd();
+            }
         }
 
 
@@ -351,7 +364,7 @@ namespace wpf_winthino
                     encoder.Save(stream);
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 System.Windows.MessageBox.Show("失败,请检查配置的附件文件的位置是否正确，如第一次设置，请重启软件");
             }

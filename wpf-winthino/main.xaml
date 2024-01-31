@@ -7,6 +7,51 @@
         mc:Ignorable="d"
         Icon="/image/013112574164_0纸飞机,折纸,发送.ico" 
         Title="main" Height="350" Width="350" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown" Loaded="mainf_Loaded">
+
+    <Window.Resources>
+        <Style x:Key="ToolTipBox" TargetType="ToolTip">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Placement" Value="Center" />
+            <Setter Property="VerticalOffset" Value="-30" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToolTip}">
+                        <Grid Margin="5">
+                            <Border
+                            Margin="0,0,0,6"
+                            Padding="10,0,10,0"
+                            Background="White"
+                            CornerRadius="3">
+                                <Border.Effect>
+                                    <DropShadowEffect
+                                    BlurRadius="3"
+                                    ShadowDepth="0"
+                                    Color="#FFA2A2A2" />
+                                </Border.Effect>
+                            </Border>
+                            <Border
+                            x:Name="grid"
+                            Margin="0,0,0,6"
+                            Padding="10,0,10,0"
+                            Background="Black"
+                            CornerRadius="1">
+                                <ContentPresenter Margin="6" />
+                            </Border>
+                            <Polygon
+                            x:Name="ButtonPolygon"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Fill="Black"
+                            Points="0,0 12,0 6,6" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+
     <Border Background="White" CornerRadius="15" x:Name="bor" >
         <Grid>
             <Grid Height="290" Width="340" VerticalAlignment="Top" x:Name="grtext">
@@ -30,19 +75,31 @@
                     <Grid>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5,2,0,0" >
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_2">
+                                <Button.ToolTip>
+                                    <ToolTip Grid.Row="1" Content = "粗体" Style="{DynamicResource ToolTipBox}"/>
+                                </Button.ToolTip>
                                 <Image Source="/image/粗体.png" Height="25"/>
                             </Button>
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_3">
+                                <Button.ToolTip>
+                                    <ToolTip Grid.Row="1" Content = "斜体" Style="{DynamicResource ToolTipBox}"/>
+                                </Button.ToolTip>
                                 <Image Source="/image/斜体.png" Height="28" />
                             </Button>
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_4">
+                                <Button.ToolTip>
+                                    <ToolTip Grid.Row="1" Content = "删除线" Style="{DynamicResource ToolTipBox}"/>
+                                </Button.ToolTip>
                                 <Image Source="/image/删除线.png" Height="30" />
                             </Button>
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_5">
+                                <Button.ToolTip>
+                                    <ToolTip Grid.Row="1" Content = "高亮" Style="{DynamicResource ToolTipBox}"/>
+                                </Button.ToolTip>
                                 <Image Source="/image/高亮.png"  Height="25" Margin="0,3,0,0"/>
                             </Button>
 
-                            <DatePicker Height="25" Background="Transparent" Width="30" BorderThickness="0" Margin="105,5,0,0" x:Name="date" SelectedDateChanged="date_SelectedDateChanged"/>
+                            <DatePicker Height="25" Background="Transparent" Width="30" BorderThickness="0" Margin="105,4,0,0" x:Name="date" SelectedDateChanged="date_SelectedDateChanged"/>
 
                         </StackPanel>
 
@@ -59,11 +116,23 @@
                                 <ComboBoxItem Content="CANVAS"/>
                             </ComboBox>
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_6" >
+                                <Button.ToolTip>
+                                    <ToolTip Grid.Row="1" Content = "上传图片" Style="{DynamicResource ToolTipBox}"/>
+                                </Button.ToolTip>
                                 <Image Source="/image/上传图片.png"  Height=" 22"/>
                             </Button>
 
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" x:Name="clear" Margin="61,0,0,0" Click="clear_Click" >
+                                <Button.ToolTip>
+                                    <ToolTip Grid.Row="1" Content = "清除输入" Style="{DynamicResource ToolTipBox}"/>
+                                </Button.ToolTip>
+                                <Image Source="/image/清除.png" Height="25"/>
+                            </Button>
 
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" x:Name="setb" Click="setb_Click" Margin="91,0,0,0" >
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" x:Name="setb" Click="setb_Click"  >
+                                <Button.ToolTip>
+                                    <ToolTip Grid.Row="1" Content = "设置" Style="{DynamicResource ToolTipBox}"/>
+                                </Button.ToolTip>
                                 <Image Source="/image/设置.png" Height="25"/>
                             </Button>
 
@@ -74,12 +143,30 @@
 
 
             <Border Background="White" Height="70" Width="70" Grid.Column="1" CornerRadius="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
-                <Button x:Name="but" Click="but_Click" Background="Transparent" BorderThickness="0" Height="52" Width="52" MouseLeftButtonDown="but_MouseLeftButtonDown" >
+                <Button x:Name="but" Click="but_Click" Background="Transparent" BorderThickness="0" Height="52" Width="52" MouseLeftButtonDown="but_MouseLeftButtonDown" MouseEnter="but_MouseEnter" MouseLeave="but_MouseLeave"  >
                     <Border CornerRadius="15" BorderThickness="2" BorderBrush="Black" Height="50" Width="50" x:Name="fsb" >
                         <TextBlock Text="发射" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="textb"/>
                     </Border>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="LightBlue"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="15">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
                 </Button>
-
             </Border>
         </Grid>
     </Border>

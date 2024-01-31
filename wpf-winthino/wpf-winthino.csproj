@@ -142,5 +142,8 @@
   <ItemGroup>
     <Resource Include="image\013112574164_0纸飞机,折纸,发送.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\清除.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

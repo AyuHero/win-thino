@@ -65,6 +65,9 @@ namespace wpf_winthino
                 fsb.Width = 50;
                 bigger = 1;
 
+                fsb.Background = new SolidColorBrush(Colors.Black);
+                textb.Foreground = new SolidColorBrush(Colors.White);
+
                 rich.Document.Blocks.Clear();
                 rich.AppendText(System.Windows.Clipboard.GetText());
                 System.Windows.Clipboard.Clear();
@@ -359,6 +362,29 @@ namespace wpf_winthino
             fsb.Background = new SolidColorBrush(Colors.White);
             textb.Foreground = new SolidColorBrush(Colors.Black);
             textb.Text = "发射";
+        }
+
+        public object color1 = null;
+        public object color2 = null;
+        private void but_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            color1 = fsb.Background;
+            color2 =textb.Foreground;
+            textb.Foreground = new SolidColorBrush(Colors.White);
+            fsb.Background = new SolidColorBrush(Colors.Black);
+        }
+
+        private void but_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            textb.Foreground = (System.Windows.Media.Brush)color2;
+            fsb.Background = (System.Windows.Media.Brush)color1;
+            color1 = null;
+            color2 = null;
+        }
+
+        private void clear_Click(object sender, RoutedEventArgs e)
+        {
+            rich.Document.Blocks.Clear();
         }
     }
 }

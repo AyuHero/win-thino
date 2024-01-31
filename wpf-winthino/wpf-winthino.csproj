@@ -139,5 +139,8 @@
   <ItemGroup>
     <Resource Include="image\粘贴-F.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="image\013112574164_0纸飞机,折纸,发送.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

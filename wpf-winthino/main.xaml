@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_winthino"
         mc:Ignorable="d"
+        Icon="/image/013112574164_0纸飞机,折纸,发送.ico" 
         Title="main" Height="350" Width="350" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown" Loaded="mainf_Loaded">
     <Border Background="White" CornerRadius="15" x:Name="bor" >
         <Grid>

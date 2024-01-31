@@ -57,7 +57,7 @@
                                 <ComboBoxItem Content="FILE"/>
                                 <ComboBoxItem Content="CANVAS"/>
                             </ComboBox>
-                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" >
+                            <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_6" >
                                 <Image Source="/image/上传图片.png"  Height=" 22"/>
                             </Button>
 

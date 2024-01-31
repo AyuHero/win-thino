@@ -1,9 +1,13 @@
-﻿using System.IO;
+﻿using Microsoft.Win32;
+using System;
+using System.Drawing;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace wpf_winthino
 {
@@ -138,7 +142,7 @@ namespace wpf_winthino
                     filestring = sr.ReadToEnd();
                 }
             }
-            catch 
+            catch
             {
                 // 处理异常
                 System.Windows.MessageBox.Show("配置文件异常请检查");
@@ -242,6 +246,43 @@ namespace wpf_winthino
             rich.CaretPosition.InsertTextInRun(formattedText);
 
             System.Windows.Clipboard.Clear();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.png;*.jpg;*.jpeg;*.gif;*.bmp|All Files|*.*";
+            openFileDialog.ShowDialog();
+            string filePath = openFileDialog.FileName;
+            BitmapImage image = new BitmapImage(new Uri(filePath));
+            string savePath = setsrting[1] + @"\image" + imas + ".png";
+            SaveImage(image, savePath);
+            rich.AppendText("\n![[image" + imas + ".png|500]]\n");
+            imas += 1;
+            string a = setsrting[0] + "," + setsrting[1] + "," + imas;
+            string filPath = @".\配置文件.txt";
+            File.WriteAllText(filPath, a);
+            System.Windows.Clipboard.Clear();
+
+        }
+
+
+        private void SaveImage(BitmapImage image, string filePath)
+        {
+            try
+            {
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(image));
+
+                using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                {
+                    encoder.Save(stream);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("失败,请检查配置的附件文件的位置是否正确，如第一次设置，请重启软件");
+            }
         }
     }
 }

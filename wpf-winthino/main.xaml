@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:wpf_winthino"
         mc:Ignorable="d"
         Icon="/image/013115302283_0纸飞机,折纸,发送 (1).ico" 
-        Title="main" Height="350" Width="350" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown" Loaded="mainf_Loaded">
+        Title="main" Height="220" Width="350" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown" Loaded="mainf_Loaded">
 
 
-    
+
     <Window.Resources>
         <Style x:Key="ToolTipBox" TargetType="ToolTip">
             <Setter Property="Foreground" Value="White" />
@@ -58,12 +58,12 @@
         <Grid>
             <Grid Height="290" Width="340" VerticalAlignment="Top" x:Name="grtext">
                 <StackPanel HorizontalAlignment="Center">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text=" Win Thino" FontSize="25" Margin="0,5,0,1"/>
+                    <StackPanel Orientation="Horizontal" Height="31">
+                        <TextBlock Text=" Win Thino" FontSize="24"/>
                         <Button Width="20" Height=" 20" Background="Transparent" Content="—" BorderThickness="0" Margin="155,-2,0,0" Click="Button_Click_1"/>
                         <Button Width="20" Height=" 20" Background="Transparent" Content="X" BorderThickness="0" Margin="8,0" Click="Button_Click"/>
                     </StackPanel>
-                    <RichTextBox Height="240" Width="330" BorderBrush="Black" BorderThickness="2"  x:Name="rich" PreviewMouseLeftButtonDown="rich_PreviewMouseLeftButtonDown">
+                    <RichTextBox Height="119" Width="330" BorderBrush="Black" BorderThickness="2"  x:Name="rich" PreviewMouseLeftButtonDown="rich_PreviewMouseLeftButtonDown">
                         <RichTextBox.Document>
                             <FlowDocument Focusable="True" LineHeight="1">
                             </FlowDocument>

@@ -44,13 +44,13 @@ namespace wpf_winthino
 
             if (bigger == 0)
             {
-                Top = Top - 280;
+                Top = Top - 150;
                 Left = Left - 280;
 
-                bor.Height = 350;
+                bor.Height = 220;
                 bor.Width = 350;
 
-                this.Height = 350;
+                this.Height = 220;
                 this.Width = 350;
 
                 grtext.Visibility = Visibility.Visible;
@@ -164,7 +164,7 @@ namespace wpf_winthino
             this.Height = 70;
             this.Width = 70;
 
-            Top = Top + 280;
+            Top = Top + 150;
             Left = Left + 280;
 
             grtext.Visibility = Visibility.Collapsed;

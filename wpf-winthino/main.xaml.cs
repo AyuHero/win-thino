@@ -441,5 +441,10 @@ namespace wpf_winthino
         {
             rich.Document.Blocks.Clear();
         }
+
+        private void rich_PreviewMouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            rich.BorderBrush = new SolidColorBrush(Colors.Black);
+        }
     }
 }

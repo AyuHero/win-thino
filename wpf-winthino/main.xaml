@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:wpf_winthino"
         mc:Ignorable="d"
         Icon="/image/013115302283_0纸飞机,折纸,发送 (1).ico" 
-        Title="main" Height="220" Width="350" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown" Loaded="mainf_Loaded">
+        Title="main" Height="220" Width="350" WindowStyle="None" ShowInTaskbar="False" AllowsTransparency="True" ResizeMode="CanResize" Background="Transparent" x:Name="mainf"  MouseLeftButtonDown="mainf_MouseLeftButtonDown" Loaded="mainf_Loaded">
 
 
 

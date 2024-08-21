@@ -1,18 +1,13 @@
-﻿using Microsoft.Win32;
+﻿
 using System;
-using System.Drawing;
 using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace wpf_winthino
@@ -426,7 +421,7 @@ namespace wpf_winthino
             color1 = fsb.Background;
             color2 =textb.Foreground;
             textb.Foreground = new SolidColorBrush(Colors.White);
-            fsb.Background = new SolidColorBrush(Colors.Black);
+            fsb.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8076a3"));
         }
 
         private void but_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
@@ -440,11 +435,13 @@ namespace wpf_winthino
         private void clear_Click(object sender, RoutedEventArgs e)
         {
             rich.Document.Blocks.Clear();
+            rich.Focus();
         }
 
         private void rich_PreviewMouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             rich.BorderBrush = new SolidColorBrush(Colors.Black);
         }
+
     }
 }

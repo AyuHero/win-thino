@@ -12,6 +12,24 @@
 
     <Window.Resources>
 
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="15">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="{x:Type RichTextBox}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -24,10 +42,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsKeyboardFocused" Value="True">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="black"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#8076a3"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="black"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#8076a3"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -78,7 +96,7 @@
 
 
 
-    <Border Background="#ffffef" CornerRadius="15" x:Name="bor" >
+    <Border Background="#FFFFFBEF" CornerRadius="15" x:Name="bor" >
         <Grid>
             <Grid Height="220" Width="340" VerticalAlignment="Top" x:Name="grtext" Margin="5,0,5,0">
                 <StackPanel HorizontalAlignment="Center">
@@ -87,7 +105,7 @@
                         <Button Width="20" Height=" 20" Background="Transparent" Content="—" BorderThickness="0" Margin="155,-2,0,0" Click="Button_Click_1"/>
                         <Button Width="20" Height=" 20" Background="Transparent" Content="X" BorderThickness="0" Margin="8,0" Click="Button_Click"/>
                     </StackPanel>
-                    <RichTextBox Height="119" Width="330" BorderBrush="Black" BorderThickness="2"  x:Name="rich" PreviewMouseLeftButtonDown="rich_PreviewMouseLeftButtonDown" Background="#FFFFFFF8" SelectionBrush="Black" FontSize="13" PreviewMouseMove="rich_PreviewMouseMove" >
+                    <RichTextBox Height="119" Width="330" BorderBrush="Black" BorderThickness="2"  x:Name="rich" PreviewMouseLeftButtonDown="rich_PreviewMouseLeftButtonDown" Background="#FFFFFFF8" SelectionBrush="Black" PreviewMouseMove="rich_PreviewMouseMove" FontFamily="SimSun" Padding="3,5,0,0" FontSize="15" Foreground="#FF2B2828" >
                         <RichTextBox.Document>
                             <FlowDocument Focusable="True" LineHeight="1">
                             </FlowDocument>
@@ -99,13 +117,14 @@
             <Grid Width="280" Height="65" HorizontalAlignment="Left" Margin="5,5" VerticalAlignment="Bottom" x:Name="grbom">
                 <Border BorderThickness="0" BorderBrush="Black" Height="65" Width="270">
                     <Grid>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5,2,0,0" >
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5,2,0,0"  >
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_2">
                                 <Button.ToolTip>
                                     <ToolTip Grid.Row="1" Content = "粗体" Style="{DynamicResource ToolTipBox}"/>
                                 </Button.ToolTip>
                                 <Image Source="/image/粗体.png" Height="25"/>
                             </Button>
+
                             <Button Height="30" Background="Transparent" Width="30" BorderThickness="0" Click="Button_Click_3">
                                 <Button.ToolTip>
                                     <ToolTip Grid.Row="1" Content = "斜体" Style="{DynamicResource ToolTipBox}"/>
@@ -161,7 +180,6 @@
                                 </Button.ToolTip>
                                 <Image Source="/image/设置.png" Height="25"/>
                             </Button>
-
                         </StackPanel>
                     </Grid>
                 </Border>
@@ -173,25 +191,6 @@
                     <Border CornerRadius="15" BorderThickness="2" BorderBrush="Black" Height="50" Width="50" x:Name="fsb" >
                         <TextBlock Text="发射" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="textb"/>
                     </Border>
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="LightBlue"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Border Background="{TemplateBinding Background}" CornerRadius="15">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="Transparent"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Button.Style>
                 </Button>
             </Border>
         </Grid>

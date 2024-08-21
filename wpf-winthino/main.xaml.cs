@@ -1,28 +1,29 @@
-﻿using Microsoft.Win32;
+﻿
 using System;
-using System.Drawing;
 using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Forms;
+using System.Drawing;
+using Color = System.Windows.Media.Color;
+using ColorConverter = System.Windows.Media.ColorConverter;
+using Application = System.Windows.Application;
 
 namespace wpf_winthino
 {
     /// <summary>
     /// main.xaml 的交互逻辑
     /// </summary>
+    /// 
     public partial class main : System.Windows.Window
     {
-
+        private NotifyIcon trayIcon; // 托盘图标实例
         public string[] setsrting = { };
         public int imas = 0;
 
@@ -31,12 +32,41 @@ namespace wpf_winthino
             InitializeComponent();
             Topmost = true;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            InitializeTrayIcon();
         }
+
+        private void InitializeTrayIcon()
+        {
+
+            var iconStream = Application.GetResourceStream(new Uri("pack://application:,,,/image/013115302283_0纸飞机,折纸,发送 (1).ico")).Stream;
+            trayIcon = new NotifyIcon
+            {
+                Icon = new Icon(iconStream), // 使用图标流来创建图标
+                Visible = true,
+                Text = "Win-Thino" // 鼠标悬停时显示的文本
+            };
+
+            trayIcon.DoubleClick += TrayIcon_DoubleClick; // 设置双击事件处理程序
+        }
+
+        private void TrayIcon_DoubleClick(object sender, EventArgs e)
+        {
+            this.Close(); 
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            trayIcon.Dispose(); // 应用程序关闭时清理托盘图标
+        }
+
 
 
         public int bigger = 1;
 
-
+        public double windowLeft = 0;
+        public double windowTop = 0;
+        public int winmove = 0;
 
         private async void but_Click(object sender, RoutedEventArgs e)
         {
@@ -44,13 +74,33 @@ namespace wpf_winthino
 
             if (bigger == 0)
             {
-                Top = Top - 280;
+                windowLeft = this.Left;
+                windowTop = this.Top;
+                winmove = 1;
+
+                // 获取屏幕的工作区大小
+                var screenWidth = System.Windows.SystemParameters.WorkArea.Width;
+                var screenHeight = System.Windows.SystemParameters.WorkArea.Height;
+
+                // 计算窗口的位置
+                var windowWidth = this.Width;
+                var windowHeight = this.Height;
+
+                var newLeft = (screenWidth - windowWidth) / 2;
+                var newTop = (screenHeight - windowHeight) / 2;
+
+                // 设置窗口的位置
+                this.Left = newLeft + 140;
+                this.Top = newTop + 75;
+
+
+                Top = Top - 150;
                 Left = Left - 280;
 
-                bor.Height = 350;
+                bor.Height = 220;
                 bor.Width = 350;
 
-                this.Height = 350;
+                this.Height = 220;
                 this.Width = 350;
 
                 grtext.Visibility = Visibility.Visible;
@@ -71,6 +121,7 @@ namespace wpf_winthino
                 rich.Document.Blocks.Clear();
                 rich.AppendText(System.Windows.Clipboard.GetText());
                 System.Windows.Clipboard.Clear();
+
 
 
                 return;
@@ -158,13 +209,15 @@ namespace wpf_winthino
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            if (winmove == 0)
+            { 
             bor.Height = 70;
             bor.Width = 70;
 
             this.Height = 70;
             this.Width = 70;
 
-            Top = Top + 280;
+            Top = Top + 150;
             Left = Left + 280;
 
             grtext.Visibility = Visibility.Collapsed;
@@ -186,6 +239,41 @@ namespace wpf_winthino
 
             bigger = 0;
             return;
+            }
+            if (winmove == 1)
+            {
+                bor.Height = 70;
+                bor.Width = 70;
+
+                this.Height = 70;
+                this.Width = 70;
+
+                Top = Top + 150;
+                Left = Left + 280;
+
+                grtext.Visibility = Visibility.Collapsed;
+                grbom.Visibility = Visibility.Collapsed;
+
+
+
+                textb.Text = "开启";
+
+                but.Height = 47;
+                but.Width = 47;
+
+                fsb.Height = 45;
+                fsb.Width = 45;
+
+
+                fsb.Background = new SolidColorBrush(Colors.White);
+                textb.Foreground = new SolidColorBrush(Colors.Black);
+
+                bigger = 0;
+
+                this.Left = windowLeft;
+                this.Top = windowTop;
+                return;
+            }
         }
 
 
@@ -426,7 +514,7 @@ namespace wpf_winthino
             color1 = fsb.Background;
             color2 =textb.Foreground;
             textb.Foreground = new SolidColorBrush(Colors.White);
-            fsb.Background = new SolidColorBrush(Colors.Black);
+            fsb.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8076a3"));
         }
 
         private void but_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
@@ -440,6 +528,13 @@ namespace wpf_winthino
         private void clear_Click(object sender, RoutedEventArgs e)
         {
             rich.Document.Blocks.Clear();
+            rich.Focus();
         }
+
+        private void rich_PreviewMouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            rich.BorderBrush = new SolidColorBrush(Colors.Black);
+        }
+
     }
 }
